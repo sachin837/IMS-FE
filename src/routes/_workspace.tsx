@@ -1,0 +1,22 @@
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+
+export const Route = createFileRoute("/_workspace")({
+  component: WorkspaceLayout,
+});
+
+function WorkspaceLayout() {
+  return (
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full bg-background">
+        <AppSidebar />
+        <SidebarInset className="flex min-w-0 flex-1 flex-col">
+          <main className="flex-1 overflow-hidden">
+            <Outlet />
+          </main>
+        </SidebarInset>
+      </div>
+    </SidebarProvider>
+  );
+}
